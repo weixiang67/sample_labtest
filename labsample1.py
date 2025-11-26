@@ -15,14 +15,17 @@ import csv
 ##########################################################
 def get_longest_workout(workouts):
     longest = None
-
+    temp = 0
+    if len(workouts) == 0:
+        return longest
+    for item in workouts:
+        if item["duration"] > temp:
+            
+            temp = item["duration"]
+            longest = item #im assigning the entire item to longest.
     # Add your implementation from here
     #HINT: Loop through workouts and compare durations
-    for workout in workouts:
-        if longest is None or workout["duration"] > longest["duration"]: #looping through the python dic n comparing w the
-           longest = workout
     return longest
-
 
 ##################################################################
 # Function to calculate total duration of all workouts           #
@@ -34,11 +37,13 @@ def get_longest_workout(workouts):
 ##################################################################
 def calc_total_duration(workouts):
     total = 0
+    for item in workouts:
+        total += item["duration"]
 
     # Add your implementation from here
     #HINT: start with this code: for workout in workouts:
-    for workout in workouts:
-        total += workout["duration"]
+
+
     return total
 
 ##################################################################
@@ -51,10 +56,11 @@ def calc_total_duration(workouts):
 ##################################################################
 def calc_average_duration(workouts):
     average = 0
-
+    average = calc_total_duration(workouts)/len(workouts)
     # Add your implementation from here
     #HINT: Use calc_total_duration(workouts) and len(workouts)
-    average = calc_total_duration(workouts) / len(workouts)
+
+
     return average
 
 #--------- End of Functions to be implemented for Practice Lab 1 -----------------------
@@ -88,8 +94,9 @@ def load_csv():
     print("\nLoading CSV file database")
 
     workouts = []
+
     try:
-        with open('samplelabtest1-weixiang67\workouts.csv', 'r') as file: #file path impt
+        with open('workouts.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             for row in csv_reader:
                 workouts.append({
@@ -101,7 +108,7 @@ def load_csv():
         print("Error: workouts.csv file not found!")
     except Exception as e:
         print(f"Error loading CSV: {e}")
-    
+
     return workouts
 
 
@@ -175,6 +182,7 @@ def main():
                 print(f"Activity: {longest['activity']}")
                 print(f"Duration: {longest['duration']:.0f} minutes")
                 print("=" * 50)
+                
             else:
                 print("\nNo workouts found!")
 

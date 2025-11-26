@@ -1,1 +1,0 @@
-# DevOps for AIoT sample labtest1
