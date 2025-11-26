@@ -39,7 +39,7 @@ def calc_total_duration(workouts):
     total = 0
     for item in workouts:
         total += item["duration"]
-        print("lol")
+        print("lolsdsdsds")
     # Add your implementation from here
     #HINT: start with this code: for workout in workouts:
 
