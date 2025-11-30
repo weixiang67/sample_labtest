@@ -4,8 +4,8 @@
 # Git Notes
 
 ## 1. Image Syntax
-1. To add images the syntax is:
-   ![]()
+1. To add images the syntax is: `![](link)`
+
 
 ---
 
